@@ -18,8 +18,9 @@ PRED1_KEY="1_property=@jcr:content/contentFragment"
 PRED1_VAL="1_property.value=true"
 PRED1_PARAMS="${PRED1_KEY}&${PRED1_VAL}"
 
-# Return all results and guess total for performance
-LIMIT="p.limit=-1&p.guessTotal=true"
+# Use pager for better performance
+# TODO: implement pagination calls
+LIMIT="p.limit=100&guessTotal=true"
 
 QUERY="${PATH_PARAM}&${TYPE_PARAM}&${PRED1_PARAMS}&${LIMIT}"
 
