@@ -3,8 +3,6 @@
 # Date        : 1 March 2021
 # Description : Shell script to query content fragments
 
-# TODO: Add hint param for performance
-
 # Change values accordingly
 USER=admin
 PASS=admin
@@ -20,7 +18,10 @@ PRED1_KEY="1_property=@jcr:content/contentFragment"
 PRED1_VAL="1_property.value=true"
 PRED1_PARAMS="${PRED1_KEY}&${PRED1_VAL}"
 
-QUERY="${PATH_PARAM}&${TYPE_PARAM}&${PRED1_PARAMS}"
+# Return all results and guess total for performance
+LIMIT="p.limit=-1&p.guessTotal=true"
+
+QUERY="${PATH_PARAM}&${TYPE_PARAM}&${PRED1_PARAMS}&${LIMIT}"
 
 curl -s \
     -u ${USER}:${PASS} \
