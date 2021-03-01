@@ -23,9 +23,11 @@ PRED1_PARAMS="${PRED1_KEY}&${PRED1_VAL}"
 LIMIT="p.limit=100&guessTotal=true"
 
 QUERY="${PATH_PARAM}&${TYPE_PARAM}&${PRED1_PARAMS}&${LIMIT}"
+REQUEST="http://${HOST}:${PORT}/bin/querybuilder.json?${QUERY}"
 
 curl -s \
     -u ${USER}:${PASS} \
-    "http://${HOST}:${PORT}/bin/querybuilder.json?${QUERY}" | jq .
+    ${REQUEST} | jq .
 
+echo "Request: ${REQUEST}"
 echo "Query: ${QUERY}"
