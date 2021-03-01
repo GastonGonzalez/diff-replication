@@ -1,21 +1,26 @@
 #!/bin/bash
+# Author      : Gaston Gonzalez
+# Date        : 1 March 2021
+# Description : Shell script to query content fragments
 
+# TODO: Add hint param for performance
+
+# Change values accordingly
 USER=admin
 PASS=admin
 HOST=localhost
 PORT=4502
 
-PRED1_KEY="1_property=jcr:primaryType"
-PRED1_VAL="1_property.value=dam:Asset"
-PRED1_OP="1_property.operation=like"
-PRED1_PARAMS="${PRED1_KEY}&${PRED1_VAL}&${PRED1_OP}"
+# Do not change anything below this line
 
-PRED2_KEY="2_property=contentFragment"
-PRED2_VAL="2_property.value=true"
-PRED2_PARAMS="${PRED2_KEY}&${PRED2_VAL}"
+PATH_PARAM="path=/content/dam"
+TYPE_PARAM="type=dam:Asset"
 
-#QUERY="path=/content/dam&${PRED1_PARAMS}&${PRED2_PARAMS}"
-QUERY="path=/content/dam&${PRED2_PARAMS}"
+PRED1_KEY="1_property=@jcr:content/contentFragment"
+PRED1_VAL="1_property.value=true"
+PRED1_PARAMS="${PRED1_KEY}&${PRED1_VAL}"
+
+QUERY="${PATH_PARAM}&${TYPE_PARAM}&${PRED1_PARAMS}"
 
 curl -s \
     -u ${USER}:${PASS} \
