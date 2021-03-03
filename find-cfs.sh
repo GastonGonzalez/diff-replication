@@ -22,7 +22,7 @@ PRED2_KEY="2_property=jcr:primaryType"
 PRED2_VAL="2_property.value=dam:AssetContent"
 PRED2_PARAMS="${PRED2_KEY}&${PRED2_VAL}"
 
-LIMIT="p.limit=100&p.guessTotal=true"
+LIMIT="p.limit=1&p.guessTotal=true&p.offset=5"
 
 # control how much data to return
 NODE_DATA="p.hits=full&p.nodedepth=1"
